@@ -19,6 +19,7 @@ public class TestPointArray1 {
 			points[i] = new Point2D(sc.nextInt(),sc.nextInt());
 			points[i].getDetails();
 		}
+		int ch=0;
 		
 		do
 		{
@@ -27,16 +28,16 @@ public class TestPointArray1 {
 			System.out.println("3: Find distance.");
 			System.out.println("4: Exit");
 			System.out.println("Enter choice: ");
-			int ch=sc.nextInt();
+			ch=sc.nextInt();
 			
 			switch(ch)
 			{
 				case 1:
 					System.out.println("Enter index of point: ");
 					int index = sc.nextInt();
-					if(index>=0 && index<=points.length)
+					if(index>=0 && index<=n)
 					{
-						for(int i=0;i<points.length;i++)
+						for(int i=0;i<n;i++)
 						{
 							if(i==index)
 							{
@@ -48,13 +49,35 @@ public class TestPointArray1 {
 					{
 						System.out.println("Invalid index, plz retry!!");
 					}
+					break;
 					
 				case 2:
 					System.out.println("Points: ");
 					for(int i=0;i<points.length;i++)
 					{
+						System.out.println("Point["+i+"]:");
 						points[i].getDetails();
 					}
+					break;
+					
+				case 3:
+					System.out.println("Enter indices of points to find distance.");
+					int index1 = sc.nextInt();
+					int index2 = sc.nextInt();
+					
+					if(index1>n || index2>n)
+					{
+						System.out.println("Invalid indexes");
+					}
+					else
+					{
+						points[index1].calcDistance(points[index2].getX(), points[index2].getY());
+					}
+					break;
+					
+				case 4:
+					System.out.println("Thank you..");
+					break;
 			}
 		}
 		while(ch!=4);
